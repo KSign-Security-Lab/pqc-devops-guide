@@ -28,7 +28,7 @@ The **Guide** captures the design and verification contracts. The companion **[C
 | Repository | Responsibility | Main outputs |
 |:--|:--|:--|
 | **[Guide](https://github.com/KSign-Security-Lab/pqc-devops-guide)** · you are here | Specify **what must happen** and how it is verified | API definitions, process descriptions, CI architecture, evidence protocol |
-| **[Core](https://github.com/KSign-Security-Lab/pqc-devops-core)** | Implement **how it works** | SDK prototype, YAML/JSON rules, C/Java snippets, PIU knowledge base |
+| **[Core](https://github.com/KSign-Security-Lab/pqc-devops-core)** | Implement **how it works** | C Crypto-Agility SDK prototype (`libsdc` 0.2.0) · planned: YAML/JSON rules, C/Java snippets, PIU knowledge base |
 
 ## Architecture
 
@@ -49,7 +49,7 @@ Each link below opens the **issue that defines the planned deliverable**; docume
 
 | Track | Planned deliverable | Tracking |
 |:--|:--|:--|
-| Crypto-Agility | Standard API specification for legacy-to-SDC mappings and algorithm-neutral interfaces | [#3](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/3) |
+| Crypto-Agility | Standard API specification for legacy-to-SDC mappings and algorithm-neutral interfaces | [#3](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/3) · Core prototype: [API overview](https://github.com/KSign-Security-Lab/pqc-devops-core/blob/main/docs/API.md)¹ |
 | Transition process | D-R-C-A-V stages, state transitions, input/output schemas, and failure handling | [#4](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/4) |
 | CI architecture | CI workflow, execution environments, integration boundaries, and verification steps | [#5](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/5) |
 | Pipeline-as-Code | PaC skeleton, Git webhook mappings, incremental-analysis filters, and CI tool interfaces | [#6](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/6) |
@@ -57,6 +57,8 @@ Each link below opens the **issue that defines the planned deliverable**; docume
 | Load prediction | Hardware-specific weights, peak-resource estimates, profiling-based prediction method | [#8](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/8) |
 | Evidence chaining | I-C-S model, hash-linked evidence, causal relationships, and Trace-ID traceability | [#10](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/10) |
 | Governance | Draft governance framework for coordinating the end-to-end PQC transition lifecycle | [#11](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/11) |
+
+¹ The Core [C SDK prototype](https://github.com/KSign-Security-Lab/pqc-devops-core#crypto-agility-sdk-c--prototype) implements an algorithm-neutral API (AEAD, hash, MAC, KDF, signatures incl. ML-DSA, and KEMs incl. ML-KEM and an experimental X25519-ML-KEM-768 hybrid) over OpenSSL 3, Nettle, libgcrypt and liboqs with runtime provider selection. It is an implementation input to this track, **not** the approved specification; legacy-to-SDC mapping rules are not yet covered.
 
 ## Delivery workflow
 
@@ -79,7 +81,7 @@ Verification criteria ◀──────── Tests and profiling evidence
 3. Open a pull request and link the relevant issue. Changes are reviewed under the repository's branch rules.
 4. Coordinate implementation-oriented changes in **[pqc-devops-core](https://github.com/KSign-Security-Lab/pqc-devops-core/issues)**.
 
-The repository currently has no published specification files or runnable software beyond this project scaffold. Check the issues for the most current work status.
+This repository does not yet contain published specification files. Runnable code lives in Core: currently the [C Crypto-Agility SDK prototype](https://github.com/KSign-Security-Lab/pqc-devops-core#crypto-agility-sdk-c--prototype) (version 0.2.0, see the [changelog](https://github.com/KSign-Security-Lab/pqc-devops-core/blob/main/CHANGELOG.md)). Check the issues for the most current work status.
 
 ## References
 
