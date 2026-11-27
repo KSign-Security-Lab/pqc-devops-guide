@@ -28,7 +28,7 @@ PQC 전환은 암호 알고리즘 하나를 교체하는 작업만으로 끝나�
 | 저장소 | 역할 | 주요 산출물 |
 |:--|:--|:--|
 | **[Guide](https://github.com/KSign-Security-Lab/pqc-devops-guide)** · 현재 저장소 | **무엇을 어떻게 검증할지** 정의 | API 명세, 공정 정의서, CI 아키텍처, 증적 프로토콜 |
-| **[Core](https://github.com/KSign-Security-Lab/pqc-devops-core)** | **어떻게 구현할지** 구체화 | SDK 프로토타입, YAML/JSON 규칙, C/Java 스니핏, PIU 지식베이스 |
+| **[Core](https://github.com/KSign-Security-Lab/pqc-devops-core)** | **어떻게 구현할지** 구체화 | C Crypto-Agility SDK 프로토타입(`libsdc` 0.2.0) · 예정: YAML/JSON 규칙, C/Java 스니핏, PIU 지식베이스 |
 
 ## 아키텍처
 
@@ -49,7 +49,7 @@ PQC 전환은 암호 알고리즘 하나를 교체하는 작업만으로 끝나�
 
 | 영역 | 작성할 산출물 | Issue |
 |:--|:--|:--|
-| 암호 민첩성 | 레거시-SDC API 매핑 및 알고리즘 중립 인터페이스 표준 사양서 | [#3](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/3) |
+| 암호 민첩성 | 레거시-SDC API 매핑 및 알고리즘 중립 인터페이스 표준 사양서 | [#3](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/3) · Core 프로토타입: [API 개요](https://github.com/KSign-Security-Lab/pqc-devops-core/blob/main/docs/API.md)¹ |
 | 전환 공정 | D-R-C-A-V 단계, 상태 전이, 입출력 스키마 및 오류 처리 공정 정의서 | [#4](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/4) |
 | CI 아키텍처 | CI 워크플로, 실행 환경, 시스템 연동 및 검증 과정 설계서 | [#5](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/5) |
 | Pipeline-as-Code | PaC 스켈레톤, 웹훅 매핑, 증분 분석 필터 및 CI 도구 연동 규격 | [#6](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/6) |
@@ -57,6 +57,8 @@ PQC 전환은 암호 알고리즘 하나를 교체하는 작업만으로 끝나�
 | 부하 예측 | 하드웨어별 성능 가중치, 최대 자원 요구량, 프로파일링 기반 예측 명세 | [#8](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/8) |
 | 증적 체이닝 | I-C-S 모델, 해시 기반 증적 연결, 인과관계 및 Trace-ID 추적성 설계 | [#10](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/10) |
 | 거버넌스 | PQC 전환 전주기를 연계·관리하기 위한 표준 프레임워크 초안 | [#11](https://github.com/KSign-Security-Lab/pqc-devops-guide/issues/11) |
+
+¹ Core의 [C SDK 프로토타입](https://github.com/KSign-Security-Lab/pqc-devops-core/blob/main/README.ko.md)은 OpenSSL 3, Nettle, libgcrypt, liboqs 위에서 알고리즘 중립 API(AEAD, 해시, MAC, KDF, ML-DSA를 포함한 서명, ML-KEM과 실험적 X25519-ML-KEM-768 하이브리드를 포함한 KEM)와 런타임 Provider 선택을 구현합니다. 이는 본 영역의 구현 참고 자료이며 승인된 사양서가 **아닙니다**. 레거시-SDC 매핑 규칙은 아직 포함되지 않았습니다.
 
 ## 작업 흐름
 
@@ -79,7 +81,7 @@ Issue / 요구사항
 3. 해당 Issue를 연결한 Pull Request를 생성해 검토받습니다.
 4. 구현이 필요한 작업은 **[pqc-devops-core](https://github.com/KSign-Security-Lab/pqc-devops-core/issues)**에서 연계합니다.
 
-현재 저장소에는 README와 기본 프로젝트 파일 외에 공개된 명세 문서나 실행 소프트웨어가 없습니다. 진행 현황은 Issue를 기준으로 확인해 주세요.
+현재 이 저장소에는 공개된 명세 문서가 없습니다. 실행 가능한 코드는 Core에 있으며, 현재 [C Crypto-Agility SDK 프로토타입](https://github.com/KSign-Security-Lab/pqc-devops-core/blob/main/README.ko.md)(버전 0.2.0, [변경 이력](https://github.com/KSign-Security-Lab/pqc-devops-core/blob/main/CHANGELOG.md))이 제공됩니다. 진행 현황은 Issue를 기준으로 확인해 주세요.
 
 ## 참고 자료
 
